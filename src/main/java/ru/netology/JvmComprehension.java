@@ -4,15 +4,15 @@ public class JvmComprehension { //резервируем область памя
 
         public static void main(String[] args) { //создаем фрейм main в стеке
             int i = 1;                      //  добавляем в фрейм main
-            Object o = new Object();        // добавляе объекта в кучу, и создание ссылки на объект во фрейме main, так же работает загрузчик к Bootstrap ClassLoader
+            Object o = new Object();        // добавляе объекта в кучу, и создание ссылки на объект во фрейме main, так же работает загрузчик классов  Bootstrap ClassLoader
             Integer ii = 2;                 // добавляем объект добавляем в фрейм main и в кучу
             printAll(o, i, ii);             // создается фрейм printAll, работает загрузчик классов Platform ClassLoader, связываем два фрейма через ссылки в куче
-            System.out.println("finished"); // используется фрейм который был создан раньше, туда передается значение которое будет записано в куче
+            System.out.println("finished"); // используется фрейм который был создан раньше для использования класса , туда передается значение которое будет записано в куче, отработает загрузчик классов  Bootstrap ClassLoader
         }
 
         private static void printAll(Object o, int i, Integer ii) {
             Integer uselessVar = 700;                   //  добавляем во фрейм printAll
-            System.out.println(o.toString() + i + ii);  // создаем еще один фрейм, куда передаем из кучи данные
+            System.out.println(o.toString() + i + ii);  // создаем еще один фрейм, куда передаем из кучи данные, отработает загрузчик классов  Bootstrap ClassLoader
         }
 }
 
